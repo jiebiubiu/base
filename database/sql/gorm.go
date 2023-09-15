@@ -1,11 +1,9 @@
 package sql
 
 import (
-	"log"
-	"os"
 	"time"
 
-	"go.uber.org/zap"
+	"github.com/Ho-J/base/logs"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -14,22 +12,9 @@ import (
 
 var DB *gorm.DB
 
-type zapLog struct {
-}
-
-func (l zapLog) Printf(s string, params ...interface{}) {
-	zap.S().Infof(s, params...)
-}
-
 func NewGorm(conn string) *gorm.DB {
-	var _log logger.Writer
-	if zap.S() != nil {
-		_log = &zapLog{}
-	} else {
-		_log = log.New(os.Stdout, "\r\n", log.LstdFlags)
-	}
 
-	logger := logger.New(_log, // io writer
+	logger := logger.New(logs.ZapGormLog{}, // io writer
 		logger.Config{
 			SlowThreshold:             time.Millisecond * 20, // Slow SQL threshold
 			LogLevel:                  logger.Info,           // Log level
