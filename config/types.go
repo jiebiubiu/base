@@ -43,4 +43,5 @@ type Minio struct {
 type Jaeger struct {
 	CollectorEndpoint  string `mapstructure:"collectorEndpoint" json:"collectorEndpoint" yaml:"collectorEndpoint"`
 	LocalAgentHostPort string `mapstructure:"localAgentHostPort" json:"localAgentHostPort" yaml:"localAgentHostPort"`
+	ServiceName        string `mapstructure:"ServiceName" json:"ServiceName" yaml:"ServiceName"`
 }

@@ -1,10 +1,11 @@
-package trace
+package op_trace
 
 import (
 	"fmt"
 	"io"
 	"time"
 
+	"github.com/Ho-J/base/config"
 	"github.com/Ho-J/base/logs"
 	"github.com/opentracing/opentracing-go"
 	"github.com/uber/jaeger-client-go"
@@ -13,17 +14,17 @@ import (
 	jaegercfg "github.com/uber/jaeger-client-go/config"
 )
 
-func InitJaeger() (opentracing.Tracer, io.Closer, error) {
+func InitJaeger(jaegerC config.Jaeger) (opentracing.Tracer, io.Closer, error) {
 	var cfg = jaegercfg.Configuration{
-		ServiceName: "snoopy global trace", // 对其发起请求的的调用链，叫什么服务
+		ServiceName: jaegerC.ServiceName, // 对其发起请求的的调用链，叫什么服务
 		Sampler: &jaegercfg.SamplerConfig{
 			Type:  jaeger.SamplerTypeConst,
 			Param: 1,
 		},
 		Reporter: &jaegercfg.ReporterConfig{
 			LogSpans:            true,
-			CollectorEndpoint:   "http://127.0.0.1:14268/api/traces",
-			LocalAgentHostPort:  "http://127.0.0.1:6831",
+			CollectorEndpoint:   jaegerC.CollectorEndpoint,
+			LocalAgentHostPort:  jaegerC.LocalAgentHostPort,
 			BufferFlushInterval: 1 * time.Second,
 		},
 	}
