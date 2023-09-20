@@ -17,7 +17,6 @@ var MinioClient *minio.Client
 
 func NewMinioClient(minioC config.Minio) *minio.Client {
 	useSSL := false
-
 	// Initialize minio client object.
 	client, err := minio.New(minioC.Endpoint, &minio.Options{
 		Creds:  credentials.NewStaticV4(minioC.AccessKeyID, minioC.SecretAccessKey, ""),
