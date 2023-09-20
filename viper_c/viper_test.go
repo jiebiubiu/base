@@ -9,7 +9,7 @@ import (
 )
 
 func TestLoadConfig(t *testing.T) {
-	Viper("../config/default.yaml")
+	SetViper("../config/default.yaml")
 
 	mysqls := config.Mysqls{}
 	if err := LoadMysql(&mysqls); err != nil {

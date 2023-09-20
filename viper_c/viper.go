@@ -10,7 +10,7 @@ import (
 
 var vC *viper.Viper
 
-func Viper(path string) {
+func SetViper(path string) {
 	v := viper.New()
 	v.SetConfigFile(path)
 	v.SetConfigType("yaml")

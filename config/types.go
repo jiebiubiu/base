@@ -2,8 +2,10 @@ package config
 
 type Config struct {
 	RootPath string
-	Mysql    Mysql `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
-	Log      Log   `mapstructure:"log" json:"log" yaml:"log"`
+	Mysql    Mysql  `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
+	Log      Log    `mapstructure:"log" json:"log" yaml:"log"`
+	Jaeger   Jaeger `mapstructure:"jaeger" json:"jaeger" yaml:"jaeger"`
+	Minio    Minio  `mapstructure:"minio" json:"minio" yaml:"minio"`
 }
 
 type Mysqls struct {
@@ -39,6 +41,6 @@ type Minio struct {
 }
 
 type Jaeger struct {
-	CollectorEndpoint  string `mapstructure:"CollectorEndpoint" json:"CollectorEndpoint" yaml:"CollectorEndpoint"`
-	LocalAgentHostPort string `mapstructure:"accessKeyID" json:"accessKeyID" yaml:"accessKeyID"`
+	CollectorEndpoint  string `mapstructure:"collectorEndpoint" json:"collectorEndpoint" yaml:"collectorEndpoint"`
+	LocalAgentHostPort string `mapstructure:"localAgentHostPort" json:"localAgentHostPort" yaml:"localAgentHostPort"`
 }

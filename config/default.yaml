@@ -34,10 +34,10 @@ log:
   log_stdout: true
 
 jaeger:
-  	CollectorEndpoint:   "http://127.0.0.1:14268/api/traces"
-		LocalAgentHostPort:  "http://127.0.0.1:6831"
+  collectorEndpoint: "http://127.0.0.1:14268/api/traces"
+  localAgentHostPort: "http://127.0.0.1:6831"
 
 minio:
   endpoint: "127.0.0.1:6312"
-	accessKeyID: "1EMigCJcWUfoNFaaIrf4"
-	secretAccessKey: "TKFtQFcf0Jt6Fndc5B3cw9ifsfiqkmWos9ceWgrg"
+  accessKeyID: "1EMigCJcWUfoNFaaIrf4"
+  secretAccessKey: "TKFtQFcf0Jt6Fndc5B3cw9ifsfiqkmWos9ceWgrg"
