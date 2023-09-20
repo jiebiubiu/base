@@ -20,7 +20,7 @@ mysqls:
     db-name: "test"
     username: "root"
     password: "123456"
-    conn: "root:123456@tcp(127.0.0.1:3306)/test?charset=utf8mb4&parseTime=True&loc=Local"
+    conn: "root:123456@tcp(127.0.0.1:3306)/snoopy?charset=utf8mb4&parseTime=True&loc=Local"
 
 log:
   log_level: "debug"

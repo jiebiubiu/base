@@ -4,15 +4,23 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/Ho-J/base/config"
 	"github.com/Ho-J/base/logs"
+	"github.com/Ho-J/base/viper_c"
 )
 
 func TestConnDB(t *testing.T) {
+	viper_c.SetViper("../../config/default.yaml")
+	mysqls := config.Mysqls{}
+
+	viper_c.LoadMysql(&mysqls)
+	fmt.Printf(" TestConnDB: %v", mysqls)
+
 	logs.InitLogger(logs.DefaultLogConfigs)
-	InitDB("root:123456@tcp(127.0.0.1:3306)/snoopy?charset=utf8mb4&parseTime=True&loc=Local")
+	InitDB(mysqls)
 
 	res := []map[string]interface{}{}
-	if err := DB.Raw("select * from user limit ?", 10).Scan(&res).Error; err != nil {
+	if err := GetDb().Raw("select * from users limit ?", 10).Scan(&res).Error; err != nil {
 		fmt.Printf("err: %s", err)
 		return
 	}

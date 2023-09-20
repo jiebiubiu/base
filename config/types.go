@@ -2,14 +2,14 @@ package config
 
 type Config struct {
 	RootPath string
-	Mysql    Mysql  `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
+	Mysqls   Mysqls `mapstructure:"mysqls" json:"mysql" yaml:"mysqls"`
 	Log      Log    `mapstructure:"log" json:"log" yaml:"log"`
 	Jaeger   Jaeger `mapstructure:"jaeger" json:"jaeger" yaml:"jaeger"`
 	Minio    Minio  `mapstructure:"minio" json:"minio" yaml:"minio"`
 }
 
 type Mysqls struct {
-	Mysqls []Mysql `mapstructure:"mysqls" json:"mysqls" yaml:"mysqls"`
+	Mysqls []*Mysql `mapstructure:"mysqls" json:"mysqls" yaml:"mysqls"`
 }
 
 type Mysql struct {
