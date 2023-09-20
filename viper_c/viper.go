@@ -36,8 +36,6 @@ func LoadConfig(config *config.Config) error {
 		}
 	})
 
-	fmt.Printf("%+v", config)
-
 	return nil
 }
 
