@@ -21,7 +21,7 @@ func TestConnDB(t *testing.T) {
 	InitDB(c.Mysqls)
 
 	res := []map[string]interface{}{}
-	if err := GetDb().Raw("select * from users limit ?", 10).Scan(&res).Error; err != nil {
+	if err := GetDB().Raw("select * from users limit ?", 10).Scan(&res).Error; err != nil {
 		fmt.Printf("err: %s", err)
 		return
 	}

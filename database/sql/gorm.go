@@ -54,7 +54,7 @@ func InitDB(mysqlC []config.Mysql) {
 	DBM = NewGorm(mysqlC)
 }
 
-func GetDb(dbName ...string) *gorm.DB {
+func GetDB(dbName ...string) *gorm.DB {
 	if len(dbName) == 0 {
 		return DBM["default"]
 	}
