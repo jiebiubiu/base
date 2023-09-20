@@ -11,13 +11,14 @@ import (
 
 func TestConnDB(t *testing.T) {
 	viper_c.SetViper("../../config/default.yaml")
-	mysqls := config.Mysqls{}
+	c := config.Config{}
 
-	viper_c.LoadMysql(&mysqls)
-	fmt.Printf(" TestConnDB: %v", mysqls)
+	viper_c.LoadConfig(&c)
+	fmt.Printf("\n\nTestConnDB: %v", c)
 
 	logs.InitLogger(logs.DefaultLogConfigs)
-	InitDB(mysqls)
+
+	InitDB(c.Mysqls)
 
 	res := []map[string]interface{}{}
 	if err := GetDb().Raw("select * from users limit ?", 10).Scan(&res).Error; err != nil {

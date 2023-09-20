@@ -1,7 +1,6 @@
 package sql
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/Ho-J/base/config"
@@ -14,9 +13,9 @@ import (
 
 var DBM map[string]*gorm.DB
 
-func NewGorm(mysqls config.Mysqls) map[string]*gorm.DB {
+func NewGorm(mysqls []config.Mysql) map[string]*gorm.DB {
 	var dbM = map[string]*gorm.DB{}
-	for i, conf := range mysqls.Mysqls {
+	for i, conf := range mysqls {
 		if conf.Dbname == "" {
 			panic("Dbname 不能为空")
 		}
@@ -51,9 +50,8 @@ func NewGorm(mysqls config.Mysqls) map[string]*gorm.DB {
 	return dbM
 }
 
-func InitDB(mysqlC config.Mysqls) {
+func InitDB(mysqlC []config.Mysql) {
 	DBM = NewGorm(mysqlC)
-	fmt.Printf("%v", DBM)
 }
 
 func GetDb(dbName ...string) *gorm.DB {

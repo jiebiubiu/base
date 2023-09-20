@@ -11,9 +11,13 @@ import (
 
 func TestMinio(t *testing.T) {
 	viper_c.SetViper("../config/default.yaml")
-	minioC := config.Minio{}
-	viper_c.LoadMinio(&minioC)
-	InitMinio(minioC)
+	c := config.Config{}
+
+	viper_c.LoadConfig(&c)
+
+	fmt.Printf("%+v", c)
+
+	InitMinio(c.Minio)
 
 	bks, err := MinioClient.ListBuckets(context.Background())
 	if err != nil {

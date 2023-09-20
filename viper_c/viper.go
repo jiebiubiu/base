@@ -23,66 +23,89 @@ func SetViper(path string) {
 	vC = v
 }
 
-func LoadMysql(mysqlC *config.Mysqls) error {
-	if err := vC.Unmarshal(mysqlC); err != nil {
+func LoadConfig(config *config.Config) error {
+	if err := vC.Unmarshal(config); err != nil {
 		fmt.Println(err)
 		return err
 	}
 
 	vC.OnConfigChange(func(e fsnotify.Event) {
 		fmt.Println("config file changed:", e.Name)
-		if err := vC.Unmarshal(mysqlC); err != nil {
+		if err := vC.Unmarshal(config); err != nil {
 			fmt.Println(err)
 		}
 	})
 
-	return nil
-}
-
-func LoadLog(cof *config.Log) error {
-	if err := vC.Unmarshal(cof); err != nil {
-		fmt.Println(err)
-		return err
-	}
-
-	vC.OnConfigChange(func(e fsnotify.Event) {
-		fmt.Println("config file changed:", e.Name)
-		if err := vC.Unmarshal(cof); err != nil {
-			fmt.Println(err)
-		}
-	})
+	fmt.Printf("%+v", config)
 
 	return nil
 }
 
-func LoadMinio(cof *config.Minio) error {
-	if err := vC.Unmarshal(cof); err != nil {
-		fmt.Println(err)
-		return err
-	}
+// func GetMysqlC() []config.Mysql {
+// 	return
+// }
 
-	vC.OnConfigChange(func(e fsnotify.Event) {
-		fmt.Println("config file changed:", e.Name)
-		if err := vC.Unmarshal(cof); err != nil {
-			fmt.Println(err)
-		}
-	})
+// func LoadMysql(mysqlC *config.Mysqls) error {
+// 	if err := vC.Unmarshal(mysqlC); err != nil {
+// 		fmt.Println(err)
+// 		return err
+// 	}
 
-	return nil
-}
+// 	vC.OnConfigChange(func(e fsnotify.Event) {
+// 		fmt.Println("config file changed:", e.Name)
+// 		if err := vC.Unmarshal(mysqlC); err != nil {
+// 			fmt.Println(err)
+// 		}
+// 	})
 
-func LoadJaeger(cof *config.Jaeger) error {
-	if err := vC.Unmarshal(cof); err != nil {
-		fmt.Println(err)
-		return err
-	}
+// 	return nil
+// }
 
-	vC.OnConfigChange(func(e fsnotify.Event) {
-		fmt.Println("config file changed:", e.Name)
-		if err := vC.Unmarshal(cof); err != nil {
-			fmt.Println(err)
-		}
-	})
+// func LoadLog(cof *config.Log) error {
+// 	if err := vC.Unmarshal(cof); err != nil {
+// 		fmt.Println(err)
+// 		return err
+// 	}
 
-	return nil
-}
+// 	vC.OnConfigChange(func(e fsnotify.Event) {
+// 		fmt.Println("config file changed:", e.Name)
+// 		if err := vC.Unmarshal(cof); err != nil {
+// 			fmt.Println(err)
+// 		}
+// 	})
+
+// 	return nil
+// }
+
+// func LoadMinio(cof config.Minio) error {
+// 	if err := vC.Unmarshal(&cof); err != nil {
+// 		fmt.Println(err)
+// 		return err
+// 	}
+
+// 	fmt.Println(cof)
+// 	vC.OnConfigChange(func(e fsnotify.Event) {
+// 		fmt.Println("config file changed:", e.Name)
+// 		if err := vC.Unmarshal(&cof); err != nil {
+// 			fmt.Println(err)
+// 		}
+// 	})
+
+// 	return nil
+// }
+
+// func LoadJaeger(cof *config.Jaeger) error {
+// 	if err := vC.Unmarshal(cof); err != nil {
+// 		fmt.Println(err)
+// 		return err
+// 	}
+
+// 	vC.OnConfigChange(func(e fsnotify.Event) {
+// 		fmt.Println("config file changed:", e.Name)
+// 		if err := vC.Unmarshal(cof); err != nil {
+// 			fmt.Println(err)
+// 		}
+// 	})
+
+// 	return nil
+// }

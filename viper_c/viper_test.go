@@ -11,14 +11,14 @@ import (
 func TestLoadConfig(t *testing.T) {
 	SetViper("../config/default.yaml")
 
-	mysqls := config.Mysqls{}
-	if err := LoadMysql(&mysqls); err != nil {
+	c := config.Config{}
+	if err := LoadConfig(&c); err != nil {
 		fmt.Printf("err: %s", err)
 		return
 	}
 
 	for {
-		fmt.Println(mysqls)
+		fmt.Println(c)
 		time.Sleep(2 * time.Second)
 	}
 }
