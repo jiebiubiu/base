@@ -8,30 +8,34 @@ import (
 	"github.com/spf13/viper"
 )
 
-var vC *viper.Viper
+type viperC struct {
+	configPath string
+	viper      *viper.Viper
+	config     *config.Config
+}
 
-func SetViper(path string) {
-	v := viper.New()
-	v.SetConfigFile(path)
-	v.SetConfigType("yaml")
-	err := v.ReadInConfig()
+func (vc *viperC) setViper() {
+	vc.viper = viper.New()
+	vc.viper.SetConfigFile(vc.configPath)
+	vc.viper.SetConfigType("yaml")
+	err := vc.viper.ReadInConfig()
 	if err != nil {
 		panic(fmt.Sprintf("Fatal error config file: %s \n", err))
 	}
-	v.WatchConfig()
 
-	vC = v
+	vc.viper.WatchConfig()
 }
 
-func LoadConfig(config *config.Config) error {
-	if err := vC.Unmarshal(config); err != nil {
-		fmt.Println(err)
+func (vc *viperC) LoadConfig() error {
+	vc.setViper()
+
+	if err := vc.viper.Unmarshal(&vc.config); err != nil {
 		return err
 	}
 
-	vC.OnConfigChange(func(e fsnotify.Event) {
+	vc.viper.OnConfigChange(func(e fsnotify.Event) {
 		fmt.Println("config file changed:", e.Name)
-		if err := vC.Unmarshal(config); err != nil {
+		if err := vc.viper.Unmarshal(vc.config); err != nil {
 			fmt.Println(err)
 		}
 	})
@@ -39,71 +43,14 @@ func LoadConfig(config *config.Config) error {
 	return nil
 }
 
-// func GetMysqlC() []config.Mysql {
-// 	return
-// }
+func (vc *viperC) SetConfigPath(path string) {
+	vc.configPath = path
+}
 
-// func LoadMysql(mysqlC *config.Mysqls) error {
-// 	if err := vC.Unmarshal(mysqlC); err != nil {
-// 		fmt.Println(err)
-// 		return err
-// 	}
+func (vc *viperC) GetConfig() *config.Config {
+	return vc.config
+}
 
-// 	vC.OnConfigChange(func(e fsnotify.Event) {
-// 		fmt.Println("config file changed:", e.Name)
-// 		if err := vC.Unmarshal(mysqlC); err != nil {
-// 			fmt.Println(err)
-// 		}
-// 	})
-
-// 	return nil
-// }
-
-// func LoadLog(cof *config.Log) error {
-// 	if err := vC.Unmarshal(cof); err != nil {
-// 		fmt.Println(err)
-// 		return err
-// 	}
-
-// 	vC.OnConfigChange(func(e fsnotify.Event) {
-// 		fmt.Println("config file changed:", e.Name)
-// 		if err := vC.Unmarshal(cof); err != nil {
-// 			fmt.Println(err)
-// 		}
-// 	})
-
-// 	return nil
-// }
-
-// func LoadMinio(cof config.Minio) error {
-// 	if err := vC.Unmarshal(&cof); err != nil {
-// 		fmt.Println(err)
-// 		return err
-// 	}
-
-// 	fmt.Println(cof)
-// 	vC.OnConfigChange(func(e fsnotify.Event) {
-// 		fmt.Println("config file changed:", e.Name)
-// 		if err := vC.Unmarshal(&cof); err != nil {
-// 			fmt.Println(err)
-// 		}
-// 	})
-
-// 	return nil
-// }
-
-// func LoadJaeger(cof *config.Jaeger) error {
-// 	if err := vC.Unmarshal(cof); err != nil {
-// 		fmt.Println(err)
-// 		return err
-// 	}
-
-// 	vC.OnConfigChange(func(e fsnotify.Event) {
-// 		fmt.Println("config file changed:", e.Name)
-// 		if err := vC.Unmarshal(cof); err != nil {
-// 			fmt.Println(err)
-// 		}
-// 	})
-
-// 	return nil
-// }
+func NewViperC(path string) viperC {
+	return viperC{configPath: path}
+}

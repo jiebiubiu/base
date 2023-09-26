@@ -4,16 +4,15 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/Ho-J/base/config"
 	"github.com/Ho-J/base/logs"
 	"github.com/Ho-J/base/viper_c"
 )
 
 func TestConnDB(t *testing.T) {
-	viper_c.SetViper("../../config/default.yaml")
-	c := config.Config{}
+	viperC := viper_c.NewViperC("../../config/default.yaml")
+	viperC.LoadConfig()
+	c := viperC.GetConfig()
 
-	viper_c.LoadConfig(&c)
 	fmt.Printf("\n\nTestConnDB: %v", c)
 
 	logs.InitLogger(c.Log)
