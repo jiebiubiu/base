@@ -4,6 +4,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/Ho-J/base/config"
 	"github.com/natefinch/lumberjack"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
@@ -17,19 +18,7 @@ func GetLogger() *zap.SugaredLogger {
 	return logger
 }
 
-type LogConfigs struct {
-	LogLevel          string `mapstructure:"log_level" json:"log_level" yaml:"log_level"`                                  // 日志打印级别 debug  info  warning  error
-	LogFormat         string `mapstructure:"log_format" json:"log_format" yaml:"log_format"`                               // 输出日志格式	logfmt, json
-	LogPath           string `mapstructure:"log_path" json:"log_path" yaml:"log_path"`                                     // 输出日志文件路径
-	LogFileName       string `mapstructure:"log_file_name" json:"log_file_name" yaml:"log_file_name"`                      // 输出日志文件名称
-	LogFileMaxSize    int    `mapstructure:"log_file_max_size" json:"log_file_max_size" yaml:"log_file_max_size"`          // 【日志分割】单个日志文件最多存储量 单位(mb)
-	LogFileMaxBackups int    `mapstructure:"log_file_max_backups" json:"log_file_max_backups" yaml:"log_file_max_backups"` // 【日志分割】日志备份文件最多数量
-	LogMaxAge         int    `mapstructure:"log_max_age" json:"log_max_age" yaml:"log_max_age"`                            // 日志保留时间，单位: 天 (day)
-	LogCompress       bool   `mapstructure:"log_compress" json:"log_compress" yaml:"log_compress"`                         // 是否压缩日志
-	LogStdout         bool   `mapstructure:"log_stdout" json:"log_stdout" yaml:"log_stdout"`                               // 是否输出到控制台
-}
-
-var DefaultLogConfigs = LogConfigs{
+var DefaultLogConfigs = config.Log{
 	LogLevel:          "debug",
 	LogFormat:         "",
 	LogPath:           "./logs",
@@ -42,7 +31,12 @@ var DefaultLogConfigs = LogConfigs{
 }
 
 // InitLogger 初始化 log
-func InitLogger(conf LogConfigs) error {
+func InitLogger(logConfs ...config.Log) error {
+	var conf config.Log = DefaultLogConfigs
+	if len(logConfs) > 0 {
+		conf = logConfs[0]
+	}
+
 	logLevel := map[string]zapcore.Level{
 		"debug": zapcore.DebugLevel,
 		"info":  zapcore.InfoLevel,
@@ -75,7 +69,7 @@ func InitLogger(conf LogConfigs) error {
 }
 
 // getEncoder 编码器(如何写入日志)
-func getEncoder(conf LogConfigs) zapcore.Encoder {
+func getEncoder(conf config.Log) zapcore.Encoder {
 	encoderConfig := zap.NewProductionEncoderConfig()
 	encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder   // log 时间格式 例如: 2021-09-11t20:05:54.852+0800
 	encoderConfig.EncodeLevel = zapcore.CapitalLevelEncoder // 输出level序列化为全大写字符串，如 INFO DEBUG ERROR
@@ -88,7 +82,7 @@ func getEncoder(conf LogConfigs) zapcore.Encoder {
 }
 
 // getLogWriter 获取日志输出方式  日志文件 控制台
-func getLogWriter(conf LogConfigs) (zapcore.WriteSyncer, error) {
+func getLogWriter(conf config.Log) (zapcore.WriteSyncer, error) {
 	// 判断日志路径是否存在，如果不存在就创建
 	if exist := IsExist(conf.LogPath); !exist {
 		if conf.LogPath == "" {

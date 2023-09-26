@@ -16,7 +16,7 @@ func TestConnDB(t *testing.T) {
 	viper_c.LoadConfig(&c)
 	fmt.Printf("\n\nTestConnDB: %v", c)
 
-	logs.InitLogger(logs.DefaultLogConfigs)
+	logs.InitLogger(c.Log)
 
 	InitDB(c.Mysqls)
 
