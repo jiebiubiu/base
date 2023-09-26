@@ -47,7 +47,7 @@ func (vc *viperC) SetConfigPath(path string) {
 	vc.configPath = path
 }
 
-func (vc *viperC) GetConfig() *config.Config {
+func (vc viperC) GetConfig() *config.Config {
 	return vc.config
 }
 
