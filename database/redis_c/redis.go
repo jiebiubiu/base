@@ -1,4 +1,4 @@
-package redis
+package redis_c
 
 import (
 	"github.com/Ho-J/base/config"
