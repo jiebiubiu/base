@@ -12,6 +12,11 @@ import (
 )
 
 var DBM map[string]*gorm.DB
+var defaultDb = "default"
+
+func SetDefaultDB(dbName string) {
+	defaultDb = dbName
+}
 
 func NewGorm(mysqls []config.Mysql) map[string]*gorm.DB {
 	var dbM = map[string]*gorm.DB{}
@@ -43,7 +48,7 @@ func NewGorm(mysqls []config.Mysql) map[string]*gorm.DB {
 		dbM[conf.Dbname] = db
 
 		if i == 0 {
-			dbM["default"] = db
+			dbM["default"] = db // 第一个是默认库
 		}
 	}
 
@@ -56,7 +61,7 @@ func InitDB(mysqlC []config.Mysql) {
 
 func GetDB(dbName ...string) *gorm.DB {
 	if len(dbName) == 0 {
-		return DBM["default"]
+		return DBM[defaultDb]
 	}
 
 	return DBM[dbName[0]]
