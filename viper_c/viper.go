@@ -51,6 +51,6 @@ func (vc viperC) GetConfig() *config.Config {
 	return vc.config
 }
 
-func NewViperC(path string) viperC {
-	return viperC{configPath: path}
+func NewViperC(path string) config.IConfig {
+	return &viperC{configPath: path}
 }

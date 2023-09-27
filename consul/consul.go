@@ -19,9 +19,9 @@ type cosulClient struct {
 	config       *config.Config
 }
 
-func NewConsul(ecpoint, configKey string) *cosulClient {
+func NewConsul(endpoint, configKey string) config.IConfig {
 	client, err := capi.NewClient(&capi.Config{
-		Address:   ecpoint,
+		Address:   endpoint,
 		Scheme:    "http",
 		Transport: &http.Transport{},
 	})
