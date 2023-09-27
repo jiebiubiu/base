@@ -42,3 +42,8 @@ minio:
   endpoint: "127.0.0.1:6312"
   accessKeyID: "1EMigCJcWUfoNFaaIrf4"
   secretAccessKey: "TKFtQFcf0Jt6Fndc5B3cw9ifsfiqkmWos9ceWgrg"
+
+redis_conns:
+  -
+    conn: "redis://:@127.0.0.1:6379/0"
+    db_name: "localhost"

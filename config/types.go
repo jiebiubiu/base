@@ -1,15 +1,21 @@
 package config
 
 type Config struct {
-	RootPath string
-	Mysqls   []Mysql `mapstructure:"mysqls" json:"mysqls" yaml:"mysqls" config:",prefix_ext=mysqls/"`
-	Log      Log     `mapstructure:"log" json:"log" yaml:"log" config:",prefix_ext=log/"`
-	Jaeger   Jaeger  `mapstructure:"jaeger" json:"jaeger" yaml:"jaeger" config:",prefix_ext=jaeger/"`
-	Minio    Minio   `mapstructure:"minio" json:"minio" yaml:"minio" config:",prefix_ext=minio/"`
+	RootPath   string
+	Mysqls     []Mysql `mapstructure:"mysqls" json:"mysqls" yaml:"mysqls" config:",prefix_ext=mysqls/"`
+	RedisConns []Redis `mapstructure:"redis_conns" json:"redis_conns" yaml:"redis_conns" config:",prefix_ext=redis_conns/"` // redis://<user>:<pass>@localhost:6379/<db>
+	Log        Log     `mapstructure:"log" json:"log" yaml:"log" config:",prefix_ext=log/"`
+	Jaeger     Jaeger  `mapstructure:"jaeger" json:"jaeger" yaml:"jaeger" config:",prefix_ext=jaeger/"`
+	Minio      Minio   `mapstructure:"minio" json:"minio" yaml:"minio" config:",prefix_ext=minio/"`
 }
 
 type Mysqls struct {
 	Mysqls []*Mysql `mapstructure:"mysqls" json:"mysqls" yaml:"mysqls"`
+}
+
+type Redis struct {
+	Conn   string `mapstructure:"conn" json:"conn" yaml:"conn" config:"conn,prefix"`
+	DbName string `mapstructure:"db_name" json:"db_name" yaml:"db_name" config:"db_name,prefix"` // 标识哪个连接
 }
 
 type Mysql struct {
