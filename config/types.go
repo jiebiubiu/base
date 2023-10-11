@@ -7,7 +7,7 @@ type Config struct {
 	Log        Log     `mapstructure:"log" json:"log" yaml:"log" config:",prefix_ext=log/"`
 	Jaeger     Jaeger  `mapstructure:"jaeger" json:"jaeger" yaml:"jaeger" config:",prefix_ext=jaeger/"`
 	Minio      Minio   `mapstructure:"minio" json:"minio" yaml:"minio" config:",prefix_ext=minio/"`
-	Email      int
+	Email      Email   `mapstructure:"email" json:"email" yaml:"email" config:",prefix_ext=email/"`
 }
 
 type Email struct {
