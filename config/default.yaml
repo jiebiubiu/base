@@ -47,3 +47,7 @@ redis_conns:
   -
     conn: "redis://:@127.0.0.1:6379/0"
     db_name: "localhost"
+
+email:
+  account: "hoj31415@163.com"
+  password: "NJEAQYSLVCFSOVPI"

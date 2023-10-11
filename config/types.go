@@ -7,6 +7,12 @@ type Config struct {
 	Log        Log     `mapstructure:"log" json:"log" yaml:"log" config:",prefix_ext=log/"`
 	Jaeger     Jaeger  `mapstructure:"jaeger" json:"jaeger" yaml:"jaeger" config:",prefix_ext=jaeger/"`
 	Minio      Minio   `mapstructure:"minio" json:"minio" yaml:"minio" config:",prefix_ext=minio/"`
+	Email      int
+}
+
+type Email struct {
+	Account  string `mapstructure:"account" json:"account" yaml:"account" config:"account,prefix"`
+	Password string `mapstructure:"password" json:"password" yaml:"password" config:"password,prefix"`
 }
 
 type Mysqls struct {
