@@ -44,3 +44,5 @@ consul配置文件示例
     }
 }
 ```
+
+要生成 model 用   gentool -dsn "root:123456@tcp(work.ditto.com:3306)/snoopy?charset=utf8mb4&parseTime=True&loc=Local" 
