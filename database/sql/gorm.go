@@ -3,8 +3,8 @@ package sql
 import (
 	"time"
 
-	"github.com/Ho-J/base/config"
-	"github.com/Ho-J/base/logs"
+	"github.com/jiebiubiu/base/config"
+	"github.com/jiebiubiu/base/logs"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

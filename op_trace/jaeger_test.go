@@ -3,7 +3,7 @@ package op_trace
 import (
 	"testing"
 
-	"github.com/Ho-J/base/viper_c"
+	"github.com/jiebiubiu/base/viper_c"
 )
 
 func TestJaeger(t *testing.T) {

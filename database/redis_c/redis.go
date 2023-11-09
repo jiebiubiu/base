@@ -1,7 +1,7 @@
 package redis_c
 
 import (
-	"github.com/Ho-J/base/config"
+	"github.com/jiebiubiu/base/config"
 	"github.com/redis/go-redis/v9"
 )
 

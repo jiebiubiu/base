@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Ho-J/base/viper_c"
+	"github.com/jiebiubiu/base/viper_c"
 )
 
 func TestRedisClient(t *testing.T) {

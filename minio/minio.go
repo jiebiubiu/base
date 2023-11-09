@@ -3,7 +3,7 @@ package minio_c
 import (
 	"log"
 
-	"github.com/Ho-J/base/config"
+	"github.com/jiebiubiu/base/config"
 	"github.com/minio/minio-go/v7"
 	"github.com/minio/minio-go/v7/pkg/credentials"
 )

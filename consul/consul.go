@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/Ho-J/base/config"
 	capi "github.com/hashicorp/consul/api"
+	"github.com/jiebiubiu/base/config"
 	"github.com/spf13/viper"
 )
 

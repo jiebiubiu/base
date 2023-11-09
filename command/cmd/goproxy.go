@@ -4,7 +4,7 @@ Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"github.com/Ho-J/base/command/app/goproxy"
+	"github.com/jiebiubiu/base/command/app/goproxy"
 	"github.com/spf13/cobra"
 )
 

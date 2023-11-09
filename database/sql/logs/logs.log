@@ -1,16 +1,16 @@
-2023-09-15T00:14:00.480+0800	INFO	sql/gorm.go:21	[35m/Users/jie/go/src/github.com/Ho-J/base/database/sql/gorm.go:41
+2023-09-15T00:14:00.480+0800	INFO	sql/gorm.go:21	[35m/Users/jie/go/src/github.com/jiebiubiu/base/database/sql/gorm.go:41
 [0m[31m[error] [0mfailed to initialize database, got error Error 1045 (28000): Access denied for user 'root'@'172.17.0.1' (using password: YES)
-2023-09-15T00:14:12.830+0800	INFO	sql/gorm.go:21	[31;1m/Users/jie/go/src/github.com/Ho-J/base/database/sql/gorm_test.go:15 [35;1mError 1146 (42S02): Table 'snoopy.user' doesn't exist
+2023-09-15T00:14:12.830+0800	INFO	sql/gorm.go:21	[31;1m/Users/jie/go/src/github.com/jiebiubiu/base/database/sql/gorm_test.go:15 [35;1mError 1146 (42S02): Table 'snoopy.user' doesn't exist
 [0m[33m[12.027ms] [34;1m[rows:-][0m select * from user limit 10
-2023-09-20T13:02:55.697+0800	INFO	logs/zap_implements.go:21	[35m/home/jie/go/src/github.com/Ho-J/base/database/sql/gorm.go:32
+2023-09-20T13:02:55.697+0800	INFO	logs/zap_implements.go:21	[35m/home/jie/go/src/github.com/jiebiubiu/base/database/sql/gorm.go:32
 [0m[31m[error] [0mfailed to initialize database, got error Error 1049 (42000): Unknown database 'test'
-2023-09-20T13:04:23.427+0800	INFO	logs/zap_implements.go:21	[31;1m/home/jie/go/src/github.com/Ho-J/base/database/sql/gorm_test.go:23 [35;1mError 1146 (42S02): Table 'snoopy.user' doesn't exist
+2023-09-20T13:04:23.427+0800	INFO	logs/zap_implements.go:21	[31;1m/home/jie/go/src/github.com/jiebiubiu/base/database/sql/gorm_test.go:23 [35;1mError 1146 (42S02): Table 'snoopy.user' doesn't exist
 [0m[33m[45.268ms] [34;1m[rows:-][0m select * from user limit 10
-2023-09-20T13:06:29.559+0800	INFO	logs/zap_implements.go:21	[31;1m/home/jie/go/src/github.com/Ho-J/base/database/sql/gorm_test.go:23 [35;1mError 1146 (42S02): Table 'snoopy.user' doesn't exist
+2023-09-20T13:06:29.559+0800	INFO	logs/zap_implements.go:21	[31;1m/home/jie/go/src/github.com/jiebiubiu/base/database/sql/gorm_test.go:23 [35;1mError 1146 (42S02): Table 'snoopy.user' doesn't exist
 [0m[33m[1.392ms] [34;1m[rows:-][0m select * from user limit 10
-2023-09-20T14:04:29.549+0800	INFO	logs/zap_implements.go:21	[31;1m/home/jie/go/src/github.com/Ho-J/base/database/sql/gorm_test.go:23 [35;1mError 1146 (42S02): Table 'snoopy.user' doesn't exist
+2023-09-20T14:04:29.549+0800	INFO	logs/zap_implements.go:21	[31;1m/home/jie/go/src/github.com/jiebiubiu/base/database/sql/gorm_test.go:23 [35;1mError 1146 (42S02): Table 'snoopy.user' doesn't exist
 [0m[33m[4.093ms] [34;1m[rows:-][0m select * from user limit 10
-2023-09-20T14:04:59.754+0800	INFO	logs/zap_implements.go:21	[32m/home/jie/go/src/github.com/Ho-J/base/database/sql/gorm_test.go:23
+2023-09-20T14:04:59.754+0800	INFO	logs/zap_implements.go:21	[32m/home/jie/go/src/github.com/jiebiubiu/base/database/sql/gorm_test.go:23
 [0m[33m[1.424ms] [34;1m[rows:0][0m select * from users limit 10
-2023-09-20T15:16:04.178+0800	INFO	logs/zap_implements.go:21	[32m/home/jie/go/src/github.com/Ho-J/base/database/sql/gorm_test.go:24
+2023-09-20T15:16:04.178+0800	INFO	logs/zap_implements.go:21	[32m/home/jie/go/src/github.com/jiebiubiu/base/database/sql/gorm_test.go:24
 [0m[33m[15.306ms] [34;1m[rows:0][0m select * from users limit 10

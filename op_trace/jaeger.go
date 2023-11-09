@@ -5,8 +5,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/Ho-J/base/config"
-	"github.com/Ho-J/base/logs"
+	"github.com/jiebiubiu/base/config"
+	"github.com/jiebiubiu/base/logs"
 	"github.com/opentracing/opentracing-go"
 	"github.com/uber/jaeger-client-go"
 	"github.com/uber/jaeger-lib/metrics"

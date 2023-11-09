@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/Ho-J/base/viper_c"
+	"github.com/jiebiubiu/base/viper_c"
 )
 
 func TestMinio(t *testing.T) {

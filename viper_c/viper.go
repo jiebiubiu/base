@@ -3,8 +3,8 @@ package viper_c
 import (
 	"fmt"
 
-	"github.com/Ho-J/base/config"
 	"github.com/fsnotify/fsnotify"
+	"github.com/jiebiubiu/base/config"
 	"github.com/spf13/viper"
 )
 

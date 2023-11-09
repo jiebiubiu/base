@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/Ho-J/base/logs"
-	"github.com/Ho-J/base/viper_c"
+	"github.com/jiebiubiu/base/logs"
+	"github.com/jiebiubiu/base/viper_c"
 )
 
 func TestConnDB(t *testing.T) {
