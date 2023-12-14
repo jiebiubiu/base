@@ -57,3 +57,8 @@ type Jaeger struct {
 	LocalAgentHostPort string `mapstructure:"localAgentHostPort" json:"localAgentHostPort" yaml:"localAgentHostPort"  config:"localAgentHostPort,prefix,omitempty"`
 	ServiceName        string `mapstructure:"serviceName" json:"serviceName" yaml:"serviceName"  config:"serviceName,prefix,omitempty"`
 }
+
+type FastPost struct {
+	Token    string `mapstructure:"token" json:"token" yaml:"token"  config:"token,prefix,omitempty"`
+	Endpoint string `mapstructure:"endpoint" json:"endpoint" yaml:"endpoint"  config:"endpoint,prefix,omitempty"`
+}

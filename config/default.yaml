@@ -51,3 +51,7 @@ redis_conns:
 email:
   account: "hoj31415@163.com"
   password: "NJEAQYSLVCFSOVPI"
+
+fastpost:
+  token: "iamaironman"
+  endpoint: 
