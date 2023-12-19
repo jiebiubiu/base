@@ -2,12 +2,21 @@ package config
 
 type Config struct {
 	RootPath   string
+	Base       Base    `mapstructure:"base" json:"base" yaml:"base" config:",prefix_ext=base/"`
 	Mysqls     []Mysql `mapstructure:"mysqls" json:"mysqls" yaml:"mysqls" config:",prefix_ext=mysqls/"`
 	RedisConns []Redis `mapstructure:"redis_conns" json:"redis_conns" yaml:"redis_conns" config:",prefix_ext=redis_conns/"` // redis://<user>:<pass>@localhost:6379/<db>
 	Log        Log     `mapstructure:"log" json:"log" yaml:"log" config:",prefix_ext=log/"`
 	Jaeger     Jaeger  `mapstructure:"jaeger" json:"jaeger" yaml:"jaeger" config:",prefix_ext=jaeger/"`
 	Minio      Minio   `mapstructure:"minio" json:"minio" yaml:"minio" config:",prefix_ext=minio/"`
 	Email      Email   `mapstructure:"email" json:"email" yaml:"email" config:",prefix_ext=email/"`
+}
+
+type Base struct {
+	Port     string `mapstructure:"port" json:"port" yaml:"port" config:"port,prefix"`
+	Mode     string `mapstructure:"mode" json:"mode" yaml:"mode" config:"mode,prefix"`
+	Name     string `mapstructure:"name" json:"name" yaml:"name" config:"name,prefix"`
+	Version  string `mapstructure:"version" json:"version" yaml:"version" config:"version,prefix"`
+	Endpoint string `mapstructure:"endpoint" json:"endpoint" yaml:"endpoint" config:"endpoint,prefix"`
 }
 
 type Email struct {

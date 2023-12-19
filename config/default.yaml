@@ -1,8 +1,9 @@
-wc:
-  mp:
-    token: ""
-    secret: ""
-    encoding_aes_key: ""
+base:
+  port: "8080"
+  mode: "debug"
+  name: "server-name"
+  version: "v1.0.0"
+  endpoint: "http://xx.xxxx.xxx"
 
 
 mysqls:
@@ -55,3 +56,9 @@ email:
 fastpost:
   token: "iamaironman"
   endpoint: 
+
+wc:
+  mp:
+    token: ""
+    secret: ""
+    encoding_aes_key: ""
